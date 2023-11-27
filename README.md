@@ -1,24 +1,54 @@
-# README
+# Tea-Subscription
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This api service saves Tea, Subscription, and Customer information. It provides functionality to view subscriptions and their status for an individual customer, begin a new subscription for a customer, and cancel an existing subscription.
 
-Things you may want to cover:
 
-* Ruby version
+To begin:
+* Ensure that your local ruby version is 3.2.2
+    `$ rbenv local -v`
+* To install gems run 
+    `$ bundle install`
+* Create database
+    `$ rails db:{drop,create,migrate,seed}`
+* To run tests
+    `$ bundle exec rspec`
 
-* System dependencies
+Schema:
+  customer_subscriptions table
+    - status: default: 0
+    - subscription_id
+    - customer_id
+    - created_at
+    - updated_at
 
-* Configuration
+  customers table
+    - first_name
+    - last_name
+    - email
+    - address
+    - created_at
+    - updated_at
 
-* Database creation
+  subscriptions table
+    - title
+    - price
+    - frequency
+    - tea_id
+    - created_at
+    - updated_at
 
-* Database initialization
+  teas table
+    - title
+    - description
+    - temperature
+    - brew_time
+    - created_at
+    - updated_at
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Endpoints:
+  Return a customers subscriptions
+    "customers/:customer_id/customer_subscriptions"
+  Create a new customer_subscription
+    "customers/:customer_id/:subscription_id/create"
+  Cancel an existing customer_subscription
+    "customers/:customer_id/:subscription_id/cancel"

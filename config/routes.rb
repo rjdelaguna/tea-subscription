@@ -7,4 +7,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :customers, only: [] do
+    post "/:subscription_id/create", to: "customer_subscriptions#create"
+    post "/:subscription_id/cancel", to: "customer_subscriptions#cancel"
+    resources :customer_subscriptions, only: [:index] do
+    end
+  end
 end
