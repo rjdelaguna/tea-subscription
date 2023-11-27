@@ -48,7 +48,46 @@ Schema:
 Endpoints:
   Return a customers subscriptions
     "customers/:customer_id/customer_subscriptions"
+    Response Example:
+     {
+    "data": {
+        "id": null,
+        "type": "subscription",
+        "attributes": {
+            "id": null,
+            "customer_id": 1,
+            "active": [
+                {
+                    "id": 5,
+                    "title": "Tier 2",
+                    "price": "$1.00",
+                    "frequency": "weekly",
+                    "created_at": "2023-11-26T22:48:34.084Z",
+                    "updated_at": "2023-11-26T22:48:34.084Z",
+                    "tea_id": 2
+                }
+            ],
+            "cancelled": [
+                {
+                    "id": 1,
+                    "title": "Tier 1",
+                    "price": "$5.00",
+                    "frequency": "monthly",
+                    "created_at": "2023-11-26T22:48:34.074Z",
+                    "updated_at": "2023-11-26T22:48:34.074Z",
+                    "tea_id": 1
+                }
+            ]
+        }
+    }
+}
+
   Create a new customer_subscription
     "customers/:customer_id/:subscription_id/create"
+    Response Example:
+     {success: "Subscription Created Successfully"}
+
   Cancel an existing customer_subscription
     "customers/:customer_id/:subscription_id/cancel"
+    Response Example:
+     {success: "Subscription Cancelled"}
